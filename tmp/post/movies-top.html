@@ -1,0 +1,47 @@
+{% load static %}
+
+<div class=" top">
+	<div  class="barner" >  
+      <div class="text-light border-bottom title " style="">
+      Get the latest movie information from our daily buzzing blog</div> 
+	      <!-- <div class=" py-md-4 py-3 text-light min-title" style="">
+	      let us market your craft on our platform </div> 
+	      <div class="btn btn-outline-light px-3 rounded-pill click">let's go <i class="fas fa-arrow-right text-light p-1"></i></div> -->
+    </div>
+    <!-- <div class=" text-light rounded p-0 playlist bg-glass">
+      <ul class="list-unstyled m-0 p-0 ">
+        <li class="border-bottom p-2">Yo Maps - Komando <i class="fas text-light float-end p-1 fa-play"></i></li>
+        <li class="border-bottom p-2 mini-none">Bashnia - Mumiy Troll <i class="fas text-light float-end p-1 fa-play"></i></li>
+        <li class="border-bottom p-2 mini-none">Future - Hitek Tek <i class="fas text-light float-end p-1 fa-play"></i></li>
+        <li class="border-bottom p-2 mini-none">Ruger - Bounce <i class="fas text-light p-1 float-end fa-play"></i></li>
+        <li class=" p-2 ">Fall Out Boys - immortal <i class="fas text-light p-1 fa-play float-end"></i></li>
+      </ul>
+    </div> -->
+</div>
+
+<style type="text/css">
+	.top{
+		position: relative;
+	    background-color:indigo;
+	    background-image:url('{% static 'mov.jpg' %}');
+	    width:100%;
+	    height:450px;
+	    background-position:center center;
+	    background-size: 100% auto ;
+	    background-repeat: no-repeat;
+	}
+
+	@media screen and (max-width: 414px){
+     .top{
+        position: relative;
+          background-color:red;
+          background-image:url('{% static 'mov.jpg' %}');
+          width:100%;
+          height:450px;
+          background-position:cen center;
+          background-size: 165% auto ;
+          border-radius:0px 0px 10% 10% ;
+          background-repeat: no-repeat;
+      }
+  }
+</style>

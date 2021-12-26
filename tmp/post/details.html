@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %} {{object.title}} | ZMB{% endblock %}
+
+{% block body %}
+
+<div
+ style="
+ position:relative;
+ background-color:blue;
+ width:100%;
+ height:250px;
+ 
+ "
+>
+</div>
+<div class="col-md-8 mx-auto py-5 container">
+  <nav aria-label="breadcrumb p-0 m-0 ">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{% url 'home' %}" style="text-decoration:none;">Buzz</a></li>
+      <li class="breadcrumb-item active" aria-current="page">{{object.title}}</li>
+    </ol>
+  </nav>
+  <div class="row">
+    <div class="col-md-8 col my-1">
+        <h1>{{object.title}}</h1>
+
+        <div class="d-flex">
+            <div  style="
+                width:25px;
+                height:25px;
+                background-image:url('{{object.author.thumb.url}}');
+                border-radius:50%;
+                background-size: 150% auto ;
+                background-position: top center;
+            ">
+            </div>
+
+            <p class="mx-2">{{object.author.user.first_name}} {{object.author.user.last_name}}</p>
+            <p class="mx-3">{{object.l_updated}}</p>
+            <p class="mx-3 bg-dark text-light px-1">{{object.cat}}</p>
+        </div>
+
+            <div>{{object.intro| linebreaks}}</div>
+            <img src="{{object.thumb.url}}" class="img-fluid my-4">
+            <div>{{object.body| linebreaks}}</div>
+
+            {% if object.m_link %}
+              <h4 class="my-3">Stream: {{object.title}}</h4>
+              <div class="my-4">{{object.m_link|safe}}</div>
+            {% endif %}
+
+           
+            {% if object.upload %}
+            <div class="my-3">
+              <h4 class="my-3">Download: {{object.title}}</h4>
+              <audio controls>
+                <source src="{{object.upload.url}}" type="audio/ogg">
+                <source src="{{object.upload.url}}" type="audio/mpeg">
+              Your browser does not support the audio element.
+              </audio>
+              <div>
+                <a class="btn btn-success my-3" href="{{object.upload.url}}" download><i class="fa fa-download"></i> Download Mp3</a>
+              </div>
+            </div>
+            {% endif %}
+
+            {% if object.v_link %}
+              <div class="col-12">
+                <h4 class="my-3">Video: {{object.title}}</h4>
+                <div class="my-4">
+              </div>
+                {{object.v_link|safe}}
+              </div>
+            {% endif %}
+        
+            {% if object.s_link %}
+              <h4 class="my-3">Socials:</h4>
+              <div class="my-4" >{{object.s_link|safe}}</div>
+            {% endif %}
+
+
+            <div class="col-12 clearfix">
+              <div class="h1">Related Posts</div>
+              
+                
+            {% for i in r_post %}
+                {% for r in i %}
+                {% if r.id == object.id %}
+                {% else %}
+                
+                <div class="col-4 float-start my-4">
+                  <div class="" style="
+                      width:90%;
+                      height:125px;
+                      background-image:url('{{r.thumb.url}}');
+                      background-size: 150% auto ;
+                      background-position: top center;
+                  ">
+                  </div>
+                  <div class="">{{r.title}}</div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            {% endfor %}
+            </div>
+
+            <div class="">
+              <h4>Credits</h4>
+              <div class="d-flex border-top py-4">
+                <div  style="
+                width:70px;
+                height:70px;
+                background-image:url('{{object.author.thumb.url}}');
+                border-radius:50%;
+                background-size: 150% auto ;
+                background-position: top center;
+                ">
+                </div>
+                <div class="col-8 px-3">   
+                    <div class="h5">{{object.author.user.first_name}} {{object.author.user.last_name}}</div> 
+                   
+                    <div>{{object.author.snip | linebreaks}}...</div> 
+                    
+                </div>    
+              </div>
+            </div>
+
+
+            <div class="border-top py-4">
+              <h4>Leave a Comment</h4>
+              <form class="" action="{{object.get_absolute_url}}" method="post">
+                {% csrf_token %}
+                {{frm|crispy}}
+                <button class="btn btn-primary my-2" type="submit">Comment</button>
+              </form>
+            </div>
+
+            <div >
+              {% for comment in comments %}
+                <div class="comment border-top py-3">
+                  <p class="info">
+                    <b>{{ comment.name }}</b>
+                  </p>
+                  <p>
+                  {{ comment.body|linebreaks }}
+                  </p>
+                  <p>
+                  {{ comment.created }}
+                  </p>
+                </div>
+              {% empty %}
+                <p>There are no comments yet.</p>
+              {% endfor %}
+            </div>
+    </div>
+
+    <div class="col p-3">
+        <h3 class="m-2">Trending</h3>
+          {% for i in new %}
+          <a class="" href="{{i.get_absolute_url}}">
+             <li class="card p-3 m-2">{{i.title}}</li>
+          </a>
+          {% endfor %}          
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

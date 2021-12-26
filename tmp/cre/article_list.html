@@ -1,0 +1,302 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}ZedMusicBuzz | ZMB{% endblock %}
+
+{% block body %}
+{% with url_name=request.resolver_match.url_name %}
+<style type="text/css">
+
+
+  .bg-glass{
+    background-color: rgba(255, 255, 255, .15);  
+    backdrop-filter: blur(5px);
+  }
+  .playlist{
+    position: absolute;
+    top: 20%;
+    right: 150px;
+  }
+  .barner{
+      position:   absolute  ;
+      top:  20%;
+      left:   120px;
+      width: 40% ;
+
+      animation: opacityOn 5s normal forwards;
+      animation-delay: 3s;
+  }
+  @keyframes opacityOn {
+      0% {
+          opacity: 1;
+      }
+      25% {
+          opacity: 0;
+      }
+      50% {
+          opacity: 1;
+      }
+      75% {
+          opacity: 0;
+      }
+      100% {
+          opacity: 1;
+      }
+  }
+  .title{
+    font-family: 'Roboto', sans-serif;
+    font-size:  50;
+  }
+  .min-title{
+    font-family: sans-serif;font-size:  14;
+  }
+  .cardito:hover{
+    background-color: #f8f9fa;
+  }
+  .cardito:hover .mage{
+    /*box-shadow: 10px 10px gray;*/
+    box-shadow: rgba(76, 0, 255, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+  }
+  @media screen and (max-width: 414px){
+     .top{
+        position: relative;
+          background-color:red;
+          background-image:url('{% static 'music.jpg' %}');
+          width:100%;
+          height:450px;
+          background-position:right center;
+          background-size: 165% auto ;
+          border-radius:0px 0px 10% 10% ;
+          background-repeat: no-repeat;
+      }
+      .click, ul li.mini-none{
+          display: none;
+      }
+      .barner{
+          position:   absolute  ;
+          top:  10% ;
+          left: 0px;
+          width: 90% ;
+          padding: 20px;
+      }
+      .title{
+          font-family: 'Roboto', sans-serif;
+          font-size:  30;
+      }
+      .playlist{
+        position: absolute;
+        top: 75%;
+        left: 20px;
+      }
+
+  }
+  .round{
+    border-radius: 30px;
+  }
+</style>
+
+
+    {% if url_name == 'music-list' %}
+      {% include 'post/music-top.html' %}
+    {% endif %}
+    {% if url_name == 'videos-list' %}
+      {% include 'post/video-top.html' %}
+    {% endif %}
+    {% if url_name == 'movies-list' %}
+      {% include 'post/movies-top.html' %}
+    {% endif %}
+    {% if url_name == 'serries-list' %}
+      {% include 'post/movies-top.html' %}
+    {% endif %}
+    
+
+  <div class="col-md-7 col-10 mx-auto px-md-5  py-md-4 pt-4 mx-md-5">
+    <form class="d-flex" action="{% url 'articles:search'  %}">
+      <input class="form-control me-2 " name="q" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Q</button>
+    </form>
+  </div>
+
+<div class="container-md">
+    <div class="d-block d-md-none bg-white py-2 border round mb-3">
+    {% for i in post %}
+    <a class="" href="{{i.get_absolute_url}}">
+        <div class="p-2 m-2 d-flex " style="">
+            <div class="col-2 mx-2" style="
+              background-image:url('{{i.thumb.url}}');
+              background-color:red;
+              width:60px;
+              height:60px;
+              border-radius:10%;
+              background-position:center center;
+              background-size: auto 100%;
+            "></div>
+            <div>
+              <div class="h5" style="font-size:12pt">
+                  <a href="{{i.get_absolute_url}}" style="text-decoration:none;">{{i.title}}</a>
+              </div>
+              <div style="font-size:10pt;font-weight:bold">last updated: {{i.l_updated}}</div>
+            </div>
+
+        </div>
+      </a>
+    {% endfor %}
+    </div>
+</div>
+
+
+<!-- for web view. width > 480px  -->
+<div class="px-5 d-none d-md-block bg-white py-md-4 ">
+  <div class="col-md-10 mx-auto p-0">
+    
+    <div class="row p-0 m-0">
+      <div class="col-md-8 col-11 p-0 mx-2 border-end ">
+        {% if url_name == 'music-list' %}
+          <div class="h3 my-4">Popular Hits</div>
+        {% endif %}
+        {% if url_name == 'videos-list' %}
+          <div class="h3 my-4">Popular Videos</div>
+        {% endif %}
+        {% if url_name == 'movies-list' %}
+          <div class="h3 my-4">Movies</div>    
+        {% endif %}  
+        {% for i in post %}
+          <div class=" d-flex mb-5 rounded mx-3 cardito ">
+            
+              <div class="col-3 mage rounded bg-dark" style="
+                  background-image:url('{{i.thumb.url}}');
+                  background-color:red;
+                  position: relative;
+                  left: -15px;
+                  top: -15px;
+                  height:140px;
+                  background-position:center center;
+                  background-size: auto 100%;
+                ">
+                </div>
+            
+              <div class="col  mx-md-1" style="">    
+              <a class="  " href="{{i.get_absolute_url}}">
+                <div class="px-4 py-3 text-dark" style="">
+                  <p class="my-0 py-0 h5" >{{i.title}}</p>
+                  <p class="my-0 py-0" style="font-size:9pt">{{i.l_updated}}</p>
+                  <p class="my-0 py-0" style="font-size:12pt">{{i.sip}}...</p>
+                </div>
+               </a>
+              </div>
+          </div>
+           
+        {% endfor %}
+
+        <nav aria-label="Page navigation example " class="my-2">
+          <ul class="pagination">
+          {% if page_obj.has_previous %}
+
+            <li class="page-item">
+              <a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+              {% endif %}
+
+               {% for i in page_obj.paginator.page_range %}
+               {% if forloop.counter < 7 %}
+               {% if page_obj.number == i %}
+              <li class="page-item active"><a class="page-link" href="?page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
+                  {% else %}
+                <li class="page-item"><a class="page-link" href="?page={{ forloop.counter }}">{{ forloop.counter }}</a></li>
+                {% endif %}
+                 {% endif %}
+                {% endfor %}
+                 {% if page_obj.has_next %}
+          
+                <li class="page-item">
+                  <a class="page-link" href="?page={{ page_obj.next_page_number }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+                {% endif %}
+              </ul>
+            </nav> 
+
+      </div>
+      <div class="col ">
+        <div class="mx-2 col-8 text-dark px-4 pt-5 h6 pt-1">Trending News </div>
+        {% for i in news %}
+           
+
+          <div class="p-3 m-2 d-flex" style="">
+              <div class="col-2 mx-2" style="
+                background-image:url('{{i.thumb.url}}');
+                background-color:red;
+                width:60px;
+                height:60px;
+                border-radius:10%;
+                background-position:center center;
+                background-size: auto 100%;
+              "></div>
+              <div>
+                <div class="h6" style="font-size:15px">
+                    <a href="{{i.get_absolute_url}}" style="text-decoration:none;">{{i.title}}</a>
+                </div>
+                <div style="font-size:8px;">last updated: {{i.l_updated}}</div>
+              </div>
+
+              </div>
+          {% endfor %}
+
+          </div>
+    </div>
+  </div>
+  </div>
+
+<div class="pt-4 mx-4 mx-md-0">
+    {% if url_name == 'movies-list' %}
+      <div class="col-md-9 mx-auto h5">Videos</div>    
+    {% else %}   
+      <div class="col-md-9 mx-auto h5">Movies</div>
+    {% endif %}
+  <div id="style-1" class="col-md-9 scrll pt-2 mx-auto d-flex" style="overflow: auto;">
+    {% for i in feat %}
+      <div class="col-md-2 col-5 " style="margin: 0px 20px 0px 0px ;">
+        <div class="" style="
+            background-image:url('{{i.thumb.url}}');
+            background-color:red;
+            height:200px;
+            border-radius:3%;
+            background-position:center center;
+            background-size: auto 100%;
+        "></div>
+        <div class="py-2">
+          <div class="h5" style="font-size:14px;">{{i.title}}</div>
+          <div  style="font-size:7px;">{{i.l_updated}}</div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+</div>
+<style type="text/css">
+  .scrll{
+      margin-bottom:10px ;
+      overflow-y: scroll;
+  
+  }
+  #style-1::-webkit-scrollbar {
+    height: 6px;
+      background-color: #F5F5F5;
+  }
+  #style-1::-webkit-scrollbar-thumb {
+      height: 6px;
+      background-color: #212529;
+      border-radius: 6px;
+  }
+  #style-1::-webkit-scrollbar-track {
+      /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);*/
+      background-color: #F5F5F5;
+  }
+</style>
+{% endwith %}
+
+{% endblock %}
+

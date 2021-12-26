@@ -1,0 +1,1 @@
+web: gunicorn zedbuzz.wsgi --log-file -
