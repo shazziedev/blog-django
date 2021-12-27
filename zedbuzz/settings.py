@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-22ng7f)cwzj&mjk%1+(jc73dbkkxksy*cn4k6^h(+g00_3u4cg
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['swiftstream.herokuapp.com']
+ALLOWED_HOSTS = ['swiftstream.herokuapp.com','localhost','localhost:800']
 
 
 # Application definition
@@ -81,8 +81,6 @@ WSGI_APPLICATION = 'zedbuzz.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-    prod_db  =  dj_database_url.config(conn_max_age=500)
-    DATABASES['default'].update(prod_db)
 
 DATABASES = {
     'default': {
@@ -91,6 +89,8 @@ DATABASES = {
     }
 }
 
+prod_db  =  dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(prod_db)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -154,6 +154,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-CLOUDINARY_URL=cloudinary://884745663939975:X2zIpFGj9ABGyedifHoYofCxijw@hrglpzq4w
+# CLOUDINARY_URL=cloudinary://884745663939975:X2zIpFGj9ABGyedifHoYofCxijw@hrglpzq4w

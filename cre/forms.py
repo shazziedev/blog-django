@@ -17,8 +17,7 @@ class PostForm(ModelForm):
 			'body', 
 			'v_link', 
 			'm_link',
-			's_link',
-            
+			's_link',          
 			 )
 		widgets = {
 		'cat': forms.RadioSelect(),
