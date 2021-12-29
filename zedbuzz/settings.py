@@ -15,7 +15,7 @@ import os
 import dj_database_url 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+import django_heroku
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -49,6 +49,10 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    # new entry
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
+    # default
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -67,10 +71,6 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
-                # new entry
-                'whitenoise.middleware.WhiteNoiseMiddleware',
-
-                # default
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
@@ -130,6 +130,12 @@ USE_L10N = True
 USE_TZ = True
 
 
+
+#*******************************# activate django heroku settings
+django_heroku.settings(locals())
+#*******************************#
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
@@ -164,10 +170,10 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 
-CLOUDINARY_STORAGE = {
- 'CLOUD_NAME': 'hjcn0tnad',
- 'API_KEY': '624276314626511',
- 'API_SECRET': 'EwH9MjEEn30qT8Kd6mjJq0IDtTk'
- }
+# CLOUDINARY_STORAGE = {
+#  'CLOUD_NAME': 'hjcn0tnad',
+#  'API_KEY': '624276314626511',
+#  'API_SECRET': 'EwH9MjEEn30qT8Kd6mjJq0IDtTk'
+#  }
 
  
