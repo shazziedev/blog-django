@@ -16,6 +16,8 @@ import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 import django_heroku
+import cloudinary
+import cloudinary_storage
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -139,6 +141,13 @@ django_heroku.settings(locals())
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
+
+CLOUDINARY_STORAGE = {
+ 'CLOUD_NAME': 'hjcn0tnad',
+ 'API_KEY': '624276314626511',
+ 'API_SECRET': 'EwH9MjEEn30qT8Kd6mjJq0IDtTk'
+ }
+
 STATIC_URL = '/static/'
 
 # Default primary key field type
@@ -167,13 +176,8 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
-
-# CLOUDINARY_STORAGE = {
-#  'CLOUD_NAME': 'hjcn0tnad',
-#  'API_KEY': '624276314626511',
-#  'API_SECRET': 'EwH9MjEEn30qT8Kd6mjJq0IDtTk'
-#  }
 
  
