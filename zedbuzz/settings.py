@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-22ng7f)cwzj&mjk%1+(jc73dbkkxksy*cn4k6^h(+g00_3u4cg'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['swiftstream.herokuapp.com','localhost','localhost:800']
 
@@ -44,6 +44,8 @@ INSTALLED_APPS = [
 
     # third party app
     'crispy_forms',
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
@@ -158,3 +160,8 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # CLOUDINARY_URL=cloudinary://884745663939975:X2zIpFGj9ABGyedifHoYofCxijw@hrglpzq4w
+# CLOUDINARY_STORAGE = {
+#  'CLOUD_NAME': 'your_cloud_name',
+#  'API_KEY': 'your_api_key',
+#  'API_SECRET': 'your_api_secret'
+#  }
