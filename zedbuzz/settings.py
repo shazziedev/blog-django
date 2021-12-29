@@ -67,7 +67,10 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
-                # 'whitenoise.middleware.WhiteNoiseMiddleware',
+                # new entry
+                'whitenoise.middleware.WhiteNoiseMiddleware',
+
+                # default
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
@@ -159,9 +162,12 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# CLOUDINARY_URL=cloudinary://884745663939975:X2zIpFGj9ABGyedifHoYofCxijw@hrglpzq4w
-# CLOUDINARY_STORAGE = {
-#  'CLOUD_NAME': 'your_cloud_name',
-#  'API_KEY': 'your_api_key',
-#  'API_SECRET': 'your_api_secret'
-#  }
+
+
+CLOUDINARY_STORAGE = {
+ 'CLOUD_NAME': 'hjcn0tnad',
+ 'API_KEY': '624276314626511',
+ 'API_SECRET': 'EwH9MjEEn30qT8Kd6mjJq0IDtTk'
+ }
+
+ 
