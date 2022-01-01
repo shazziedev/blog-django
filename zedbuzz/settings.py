@@ -26,9 +26,9 @@ import cloudinary_storage
 SECRET_KEY = 'django-insecure-22ng7f)cwzj&mjk%1+(jc73dbkkxksy*cn4k6^h(+g00_3u4cg'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['swiftstream.herokuapp.com','localhost','localhost:800']
+ALLOWED_HOSTS = ['swiftstream.herokuapp.com','localhost','localhost:8000']
 
 
 # Application definition

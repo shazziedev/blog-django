@@ -5,37 +5,141 @@
 
 {% block body %}
 {% comment %} top carousel {% endcomment %}
-<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <div id="c-item" class="carousel-item active"  style="
+
+<style>
+  #top{
+     position: relative;
+      width:100%;
+      height:450px;
+      background-position:center center;
+      background-size: 100% auto ;
+      background-repeat: no-repeat;
+  }
+
+   #c-item, #c-item1, #c-item2{
+      background-size: 100% auto ;
+      background-position: center center;
+      background-repeat: no-repeat
+   }
+
+  #c-item{
+    background-color:blue;
+    background-image:url('{% static 'mono1.jpg' %}');    
+  }
+  #c-item1{
+    background-color:blue;
+    background-image:url('{% static 'slide2.jpg' %}');
+  }
+  #c-item2{
+    background-color:blue;
+    background-image:url('{% static 'mono2.jpg' %}');
+  }
+
+   .playlist{
+    position: absolute;
+    top: 20%;
+    right: 150px;
+    z-index: 20;
+  }
+  .bg-glass{
+    background-color: rgba(255, 255, 255, .15);  
+    backdrop-filter: blur(5px);
+  }
+  .barner{
+      position:   absolute  ;
+      top:  20%;
+      left:   120px;
+      width: 40% ;
+      z-index: 20;
+      animation: opacityOn 5s normal forwards;
+      animation-delay: 3s;
+  }
+  .title{
+    font-family: 'Roboto', sans-serif;
+    font-size:  40;
+  }
+  .min-title{
+    font-family: sans-serif;font-size:  14;
+  }
+  
+  .cardito:hover .crdto{
+    /*box-shadow: 10px 10px gray;*/
+    background-color: #f8f9fa;
+  }
+  @media screen and (max-width: 414px){
+     .top{
+        position: relative;
+          background-color:red;
+          width:100%;
+          height:450px;
+          background-position:right center;
+          background-size: 165% auto ;
+          border-radius:0px 0px 10% 10% ;
+          background-repeat: no-repeat;
+      }
+      #c-item, #c-item1, #c-item2{
+          height: 450px;
+          border-radius: 0px 0px 10% 10% ;
+          background-size:auto 100% ;
+          background-position: center center;
+          background-repeat: no-repeat
+       }
+
+      #c-item{
         background-color:blue;
-        background-image:url('{% static 'mono1.jpg' %}');
-        background-size: 100% auto ;
-        background-position: center center;
-        background-repeat: no-repeat;
-        ">
-      
-    </div>
-    <div id="c-item" class="carousel-item"  style="
+        background-image:url('{% static 'mono1.jpg' %}');    
+      }
+      #c-item1{
+        background-color:blue;
         background-image:url('{% static 'slide2.jpg' %}');
-        background-size: 100% auto;
-        background-position: center center;
-        background-color:indigo;
-        background-repeat: no-repeat;
-        ">
+      }
+      #c-item2{
+        background-color:blue;
+        background-image:url('{% static 'mono2.jpg' %}');
+      }
+
+      .barner{
+          position:   absolute  ;
+          top:  10% ;
+          left: 0px;
+          width: 90% ;
+          padding: 20px;
+      }
+      .title{
+          font-family: 'Roboto', sans-serif;
+          font-size:  30;
+      }
+      .playlist{
+        position: absolute;
+        top: 75%;
+        left: 20px;
+      }
+
+  }
+  .round{
+    border-radius: 30px;
+  }
+</style>
+
+<div id="carouselExampleControls top" class="carousel slide carousel-fade top" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div id="c-item" class="carousel-item active">
       
     </div>
-    <div id="c-item" class="carousel-item"  style="
-        
-        background-color:red;
-        background-image:url('{% static 'mono2.jpg' %}');
-        background-size:100% auto;
-        background-position: center center;
-        background-repeat: no-repeat;
-        ">
+    <div id="c-item1" class="carousel-item">
+      
+    </div>
+    <div id="c-item2" class="carousel-item">
       
     </div>
   </div>
+  <div  class="barner" >  
+      <div class="text-light title " style="">
+      Get your content buzzing on our site today! </div> 
+      <div class=" py-md-4 py-3 text-light min-title" style="">
+      contact us on WhatsApp</div> 
+      <div class="btn btn-outline-light px-3 rounded-pill click"><i class="fab fa-whatsapp"></i> +20975550955</div>
+    </div>
   
 </div>
 {% comment %} end of carousel {% endcomment %}
@@ -48,76 +152,74 @@
   </div>
 
 <!-- end search md -->
-  <div class="container px-5 d-none d-md-block ">
-    <div class="row ">
-      <div class="col-md-8 col-11 p-0 mx-2 clearfix ">
-        {% for i in data %}
-          <a class="" href="{{i.get_absolute_url}}">
-           <div class="m-2 float-start" style="
-              background-image:url('{{i.thumb.url}}');
-              background-color:red;
-              width:46%;
-              height:300px;
-              background-position:center center;
-              background-size: auto 100%;
-            ">
-              <div class="p-2 bg-dark text-light" style="top:20px;opacity: 0.9;">
-                <p class="my-0 py-0">{{i.title}}</p>
-                <p class="my-0 py-0" style="font-size:7pt">{{i.l_updated}}</p>
-              </div>
-            </div>
-            </a>
-        {% endfor %}
-      </div>
-      <div class="col ">
-        <div class="mx-2 col-8 text-dark px-4 h5 pt-1">Trending </div>
-        {% for i in data %}
-           {% if i.cat.title == "Music" %}
-          <div class="p-3 m-2" style="">
-            <a  class=" d-flex" href="{{i.get_absolute_url}}" style="text-decoration:none;">
-                <div class="col-2 mx-2" style="
-                    background-image:url('{{i.thumb.url}}');
-                    background-color:red;
-                    width:60px;
-                    height:60px;
-                    border-radius:10%;
-                    background-position:center center;
-                    background-size: auto 100%;
-                  "></div>
-                  <div>
-                    <div class="h5" style="font-size:12pt">
-                        {{i.title}}
-                    </div>
-                    <div style="font-size:9pt">last updated: {{i.l_updated}}</div>
+  <div class="px-5 d-none d-md-block bg-white mx-0">
+    <div class="container px-md-5 ">
+      <div class="row py-md-4">
+        <div class="col-md-8 ">
+          <div class="mx-2 col-8 text-dark pt-4 h4 ">Latest Articles </div>
+          <div class="row row-cols-1 row-cols-md-2 g-4">
+          {% for i in data %}
+            <div class="col cardito">
+                <div class="m-2 mage float-start card-img-top rounded" style="
+                  background-image:url('{{i.thumb.url}}');
+                  background-color:red;
+                  width:95%;
+                  height:250px;
+                  background-position:center center;
+                  background-size: auto 100%;
+                "></div>
+                <div class="card-body p-0">
+                  <div class="crdto  rounded p-3">
+                    <h5 class="card-title crdto" style="font-size:18px;">{{i.title}}</h5>
+                     <p class="card-text" style="font-size:9px;">{{i.l_updated}}</p>
+                      <a class="btn btn-sm btn-outline-danger rounded-pill px-4" href="{{i.get_absolute_url}}">more</a>
+                    
                   </div>
-                </a>
-              </div>
-              {% endif %}
+                </div>
+            </div>
           {% endfor %}
-
           </div>
+          
+        </div>
+
+        <div class="col ">
+          <div class="mx-2 col-8 text-dark px-4 pt-4 h5 ">Trending</div>
+          {% for i in trend %}
+             {% if i.cat.title == "Music" %}
+            <div class="p-3 m-2" style="">
+              <a  class=" d-flex" href="{{i.get_absolute_url}}" style="text-decoration:none;">
+                  <div class="col-2 mx-2" style="
+                      background-image:url('{{i.thumb.url}}');
+                      background-color:red;
+                      width:60px;
+                      height:60px;
+                      border-radius:10%;
+                      background-position:center center;
+                      background-size: auto 100%;
+                    "></div>
+                    <div>
+                      <div class="h5" style="font-size:12pt">
+                          {{i.title}}
+                      </div>
+                      <div style="font-size:12pt">last updated: {{i.l_updated}}</div>
+                    </div>
+                  </a>
+                </div>
+                {% endif %}
+            {% endfor %}
+
+            </div>
+      </div>
     </div>
   </div>
 
-<div class="title d-block d-flex pt-3 d-md-none col-12 container" style="">
-  <div class="mx-2 col-8 text-dark h5 pt-1">Latest </div>
-  <div class="dropdown col-2 mx-4 ml-auto">
-    <button class="btn btn-sm btn-outline-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-      All
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-      <li><a class="dropdown-item" href="#">News</a></li>
-      <li><a class="dropdown-item" href="#">Music</a></li>
-      <li><a class="dropdown-item" href="#">Videos</a></li>
-      <li><a class="dropdown-item" href="#">Movies</a></li>
-      <li><a class="dropdown-item" href="#">Serries</a></li>
-    </ul>
-  </div>
+<!-- <div class="title d-block d-flex pt-3 d-md-none col-12 container bg-white" style="">
 </div>
-
+ -->
 
 {% comment %} end of top {% endcomment %}
-<div class="container-md my-2 d-block d-md-none">
+<div class="container-md my-2 bg-white p-4 d-block d-md-none">
+  <div class="mx-2 col-8 text-dark h5 pt-1">Buzzing Entry </div>
     {% for i in data %}
         <div class="m-2 d-flex my-4 " style="">
           <a class="stretched-link" href="{{i.get_absolute_url}}">

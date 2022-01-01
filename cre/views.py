@@ -22,15 +22,17 @@ class HomeScreen(ListView):
 
 		context = super().get_context_data(**kwargs)
 		cat = Category.objects.all()
-		data = Article.objects.all()[:8]
+		data = Article.objects.all()[:4]
 		# filter out media from db
 		music = Article.objects.filter(cat__title='Music')
+		trend = Article.objects.filter(cat__title='Music')[:7]
 		videos = Article.objects.filter(cat__title='Videos')
 		news = Article.objects.filter(cat__title='News')
 
 		context['news'] = news
 		context["vid"] = videos 
 		context['music'] = music
+		context['trend'] = trend
 		context["cat"] = cat
 		context['data'] = data
 		return context
