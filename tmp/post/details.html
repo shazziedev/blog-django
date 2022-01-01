@@ -5,15 +5,27 @@
 
 {% block body %}
 
-<div
- style="
- position:relative;
- background-color:blue;
- width:100%;
- height:250px;
- 
- "
->
+<style type="text/css">
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+  #top{
+    position:relative;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(57,6,95,1) 24%, rgba(7,0,105,1) 50%, rgba(16,0,164,1) 55%, rgba(240,8,129,1) 63%, rgba(0,212,255,1) 100%);
+
+    width:100%;
+    height:70px;
+  }
+  .main-title{
+    font-family: 'Roboto', sans-serif;
+  }
+  @media screen and (max-width: 414px){
+      #top{
+        height:30px;
+      }
+  }
+</style>
+
+<div id="top">
 </div>
 <div class="col-md-8 mx-auto py-5 container">
   <nav aria-label="breadcrumb p-0 m-0 ">
@@ -24,8 +36,8 @@
   </nav>
   <div class="row">
     <div class="col-md-8 col my-1">
-        <h1>{{object.title}}</h1>
 
+        <div class="main-title h2">{{object.title}}</div>
         <div class="d-flex">
             <div  style="
                 width:25px;
@@ -81,8 +93,8 @@
             {% endif %}
 
 
-            <div class="col-12 clearfix">
-              <div class="h1">Related Posts</div>
+            <div class="col-12 clearfix py-5">
+              <div class="h1">Recommended Posts</div>
               
                 
             {% for i in r_post %}
@@ -92,6 +104,7 @@
                 
                 <div class="col-4 float-start my-4">
                   <div class="" style="
+                     background-color: purple;
                       width:90%;
                       height:125px;
                       background-image:url('{{r.thumb.url}}');
@@ -124,8 +137,8 @@
                     <div>{{object.author.snip | linebreaks}}...</div> 
                     
                 </div>    
-              </div> -->
-            </div>
+              </div>
+            </div> -->
 
 
             <div class="border-top py-4">

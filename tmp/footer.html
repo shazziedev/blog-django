@@ -3,9 +3,16 @@
 <div class="col-md-10 mx-auto container">
 	
 
-	<div class="container-md px-md-5 col-12 border-bottom text-white-50 d-md-flex">
-		<div class="py-3"><a href="https://www.youtube.com/channel/UCzCfS2ifMOykg6wV6oWtsAQ"> <i class="fab fa-youtube text-danger"></i> <span>  Shazzie dvl</span></a></div>
-		<div class="py-3 mx-md-4"><a href="https://web.facebook.com/shazziedevelopment"><i class="fab fa-facebook text-primary"></i> <span>  Shazzie Development</span></a></div>
+	<div class="container-md px-md-5 py-3 col-12  text-white-50 d-md-flex">
+		<div class="py-3 ">
+			<a class="btn rounded-pill px-4 btn-sm btn-danger" href="https://www.youtube.com/channel/UCzCfS2ifMOykg6wV6oWtsAQ"> <i class="fab fa-youtube text-light"></i> <span>shazzied dvl</span>
+			</a>
+		</div>
+		<div class="py-3 mx-md-4">
+			<a class="btn rounded-pill px-4 btn-sm btn-primary" href="https://web.facebook.com/shazziedevelopment">
+				<i class="fab fa-facebook text-white"></i> <span>  Shazzie Development</span>
+			</a>
+		</div>
 
 
 	</div>
@@ -17,22 +24,16 @@
 	 	<ul class="list-unstyled">
 	 		<li class="text-light h6">Collections</li>
 	 		{% for i in cat %}
-	 			<li class="text-white-50"><a class="text-white-50" style="text-decoration:none;" href="{{i.get_absolute_url}}">{{i.title}}</a></li>
+	 			<li class="text-white-50" style="font-size: 14px;"><a class="text-white-50" style="text-decoration:none;" href="{{i.get_absolute_url}}">{{i.title}}</a></li>
 	 		{% endfor %}
 	 	</ul>
 
 	 </div>
 
-	 <div class=" container-md px-md-5 my-5 my-md-0">
-	 	<li class="list-unstyled text-light h6">Developer</li>	 	
-	 	<li class="list-unstyled "> 
-	 		<a class="text-primary" href="https://www.instagram.com/kev_the_programmer/" target="_blank" style="text-decoration:none;">Kev-the-programmer</a>
-	 	</li>
-	 </div>
-
+	 
 	 <div class=" container-md px-md-5 my-5 my-md-0">
 	 	<li class="list-unstyled text-light h6">Partners</li>	 	
-	 	<li class="list-unstyled "> 
+	 	<li class="list-unstyled " > 
 	 		<a class="text-white-50" href="https://www.instagram.com/kev_the_programmer/" style="text-decoration:none;">4Hunnid Media</a>
 	 	</li>
 	 	<li class="list-unstyled "> 
@@ -43,6 +44,14 @@
 	 	</li>
 	 	<li class="list-unstyled "> 
 	 		<a class="text-white-50" href="https://www.instagram.com/kev_the_programmer/" style="text-decoration:none;">Ecom-Amasample</a>
+	 	</li>
+	 </div>
+
+
+	 <div class=" container-md px-md-5 my-5 my-md-0">
+	 	<li class="list-unstyled text-light h6">Developer</li>	 	
+	 	<li class="list-unstyled "> 
+	 		<a class="text-primary" href="https://www.instagram.com/kev_the_programmer/" target="_blank" style="text-decoration:none;">Kev-the-programmer</a>
 	 	</li>
 	 </div>
 
@@ -71,5 +80,8 @@
 	a{
 		text-decoration: none;
 		color: inherit;
+	}
+	div li{
+		font-size: 14px;
 	}
 </style>

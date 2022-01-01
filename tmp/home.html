@@ -7,32 +7,25 @@
 {% comment %} top carousel {% endcomment %}
 
 <style>
-  #top{
-     position: relative;
-      width:100%;
-      height:450px;
-      background-position:center center;
-      background-size: 100% auto ;
-      background-repeat: no-repeat;
+  .top,.top1,.top2{
+    position: relative;
+    background-size: 100% auto ;
+    height:450px;
+    background-position: center center;
+    background-repeat: no-repeat ;
   }
 
-   #c-item, #c-item1, #c-item2{
-      background-size: 100% auto ;
-      background-position: center center;
-      background-repeat: no-repeat
-   }
-
-  #c-item{
+  .top{
     background-color:blue;
-    background-image:url('{% static 'mono1.jpg' %}');    
+    background-image:url('{% static 'mono1.jpg' %}');
   }
-  #c-item1{
-    background-color:blue;
-    background-image:url('{% static 'slide2.jpg' %}');
+  .top1{
+      background-color:blue;
+      background-image:url('{% static 'mono2.jpg' %}');
   }
-  #c-item2{
+  .top2{
     background-color:blue;
-    background-image:url('{% static 'mono2.jpg' %}');
+      background-image:url('{% static 'slide2.jpg' %}');
   }
 
    .playlist{
@@ -67,36 +60,30 @@
     background-color: #f8f9fa;
   }
   @media screen and (max-width: 414px){
-     .top{
+     .top,.top1,.top2{
         position: relative;
           background-color:red;
+          /*background-image: url('{% static 'slide2.jpg' %}');*/
           width:100%;
           height:450px;
-          background-position:right center;
-          background-size: 165% auto ;
+          background-position:center center;
+          background-size:auto 100%;
           border-radius:0px 0px 10% 10% ;
           background-repeat: no-repeat;
       }
-      #c-item, #c-item1, #c-item2{
-          height: 450px;
-          border-radius: 0px 0px 10% 10% ;
-          background-size:auto 100% ;
-          background-position: center center;
-          background-repeat: no-repeat
-       }
 
-      #c-item{
-        background-color:blue;
-        background-image:url('{% static 'mono1.jpg' %}');    
+    .top{
+      background-color:blue;
+      background-image:url('{% static 'mono1.jpg' %}');
       }
-      #c-item1{
-        background-color:blue;
-        background-image:url('{% static 'slide2.jpg' %}');
+      .top1{
+          background-color:blue;
+          background-image:url('{% static 'mono2.jpg' %}');
       }
-      #c-item2{
-        background-color:blue;
-        background-image:url('{% static 'mono2.jpg' %}');
-      }
+       .top2{
+          background-color:blue;
+          background-image:url('{% static 'slide2.jpg' %}');
+        }
 
       .barner{
           position:   absolute  ;
@@ -121,28 +108,33 @@
   }
 </style>
 
-<div id="carouselExampleControls top" class="carousel slide carousel-fade top" data-bs-ride="carousel">
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
   <div class="carousel-inner">
-    <div id="c-item" class="carousel-item active">
-      
+   
+    <div id="itemOn" class="carousel-item active top">
     </div>
-    <div id="c-item1" class="carousel-item">
-      
+    
+    <div id="itemOn" class="carousel-item top1">
     </div>
-    <div id="c-item2" class="carousel-item">
-      
+    
+
+    <div id="itemOn" class="carousel-item top2">
     </div>
+    
+    
+    
   </div>
-  <div  class="barner" >  
+  
+    <div  class="barner" >  
       <div class="text-light title " style="">
       Get your content buzzing on our site today! </div> 
       <div class=" py-md-4 py-3 text-light min-title" style="">
       contact us on WhatsApp</div> 
       <div class="btn btn-outline-light px-3 rounded-pill click"><i class="fab fa-whatsapp"></i> +20975550955</div>
     </div>
-  
 </div>
 {% comment %} end of carousel {% endcomment %}
+    
   
   <div class="col-md-7 col-10  mx-auto px-md-5 m-2 py-4 mx-md-5">
     <form class="d-flex" action="{% url 'articles:search'  %}">
