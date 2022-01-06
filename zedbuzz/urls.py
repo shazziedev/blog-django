@@ -10,7 +10,7 @@ from cre.views import *
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('route/dashboard', admin.site.urls),
     path('',HomeScreen.as_view(template_name='home.html'),name="home"),
     path('blog/',include('cre.urls')),
 ]
