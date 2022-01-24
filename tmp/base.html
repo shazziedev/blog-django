@@ -1,7 +1,6 @@
 <html>
     <head>
-        {% block meta %}
-        {% endblock %}
+        
         {% load static %}
         <!-- Required meta tags -->
         <meta charset="utf-8">
@@ -25,10 +24,11 @@
         </script>
                 
         <title>
-        {% block title %}
-
-        {% endblock %}
+            {% block title %} {% endblock %}
         </title>
+        <meta name="keywords" content="swiftstream bussing spot" />
+        {% block meta %}
+        {% endblock %}
         <style>
 
             @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');

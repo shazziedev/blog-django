@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
+{% block title %} {{object.title}} | ZMB{% endblock %}
 
 {% block meta %}
-  <meta name="keywords" content={{object.title}}/>
+  <meta name="keywords" content={{object.title}} />
 {% endblock %}
 
-{% block title %} {{object.title}} | ZMB{% endblock %}
 
 {% block body %}
 
