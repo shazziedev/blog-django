@@ -54,9 +54,9 @@
             <p class="mx-3 bg-dark text-light px-1">{{object.cat}}</p>
         </div>
 
-            <div>{{object.intro| linebreaks|safe}}</div>
+            <div>{{object.intro | safe |linebreaks}}</div>
             <img src="{{object.thumb.url}}" class="img-fluid my-4">
-            <div>{{object.body| linebreaks|safe}}</div>
+            <div>{{object.body | safe | linebreaks}}</div>
 
             {% if object.m_link %}
               <h4 class="my-3">Stream: {{object.title}}</h4>
@@ -118,27 +118,7 @@
                 {% endfor %}
             {% endfor %}
             </div>
-<!-- 
-            <div class="">
-              <h4>Credits</h4>
-              <div class="d-flex border-top py-4">
-                <div  style="
-                width:70px;
-                height:70px;
-                background-image:url('{{object.author.thumb.url}}');
-                border-radius:50%;
-                background-size: 150% auto ;
-                background-position: top center;
-                ">
-                </div>
-                <div class="col-8 px-3">   
-                    <div class="h5">{{object.author.user.first_name}} {{object.author.user.last_name}}</div> 
-                   
-                    <div>{{object.author.snip | linebreaks}}...</div> 
-                    
-                </div>    
-              </div>
-            </div> -->
+
 
 
             <div class="border-top py-4">
