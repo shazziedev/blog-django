@@ -54,9 +54,9 @@
             <p class="mx-3 bg-dark text-light px-1">{{object.cat}}</p>
         </div>
 
-            <div>{{object.intro| linebreaks}}</div>
+            <div>{{object.intro| linebreaks|safe}}</div>
             <img src="{{object.thumb.url}}" class="img-fluid my-4">
-            <div>{{object.body| linebreaks}}</div>
+            <div>{{object.body| linebreaks|safe}}</div>
 
             {% if object.m_link %}
               <h4 class="my-3">Stream: {{object.title}}</h4>
