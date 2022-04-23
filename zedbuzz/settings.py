@@ -10,14 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import django_heroku
 from pathlib import Path
 import os
-import dj_database_url 
+import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-import django_heroku
-import cloudinary
-import cloudinary_storage
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -28,7 +27,7 @@ SECRET_KEY = 'django-insecure-22ng7f)cwzj&mjk%1+(jc73dbkkxksy*cn4k6^h(+g00_3u4cg
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['swiftstream.herokuapp.com','localhost','localhost:8000']
+ALLOWED_HOSTS = ['swiftstream.herokuapp.com', 'localhost', 'localhost:8000']
 
 
 # Application definition
@@ -41,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    #internal Apps
+    # internal Apps
     'cre',
 
     # third party app
@@ -96,7 +95,7 @@ DATABASES = {
     }
 }
 
-prod_db  =  dj_database_url.config(conn_max_age=500)
+prod_db = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(prod_db)
 
 # Password validation
@@ -132,8 +131,7 @@ USE_L10N = True
 USE_TZ = True
 
 
-
-#*******************************# activate django heroku settings
+# *******************************# activate django heroku settings
 django_heroku.settings(locals())
 #*******************************#
 
@@ -143,10 +141,10 @@ django_heroku.settings(locals())
 
 
 CLOUDINARY_STORAGE = {
- 'CLOUD_NAME': 'hjcn0tnad',
- 'API_KEY': '624276314626511',
- 'API_SECRET': 'EwH9MjEEn30qT8Kd6mjJq0IDtTk'
- }
+    'CLOUD_NAME': 'hjcn0tnad',
+    'API_KEY': '624276314626511',
+    'API_SECRET': 'EwH9MjEEn30qT8Kd6mjJq0IDtTk'
+}
 
 STATIC_URL = '/static/'
 
@@ -156,14 +154,13 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-
 STATIC_ROOT = os.path.join(BASE_DIR, "assets")
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR,'tmp/assets'),
-    )
+    os.path.join(BASE_DIR, 'tmp/assets'),
+)
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR,'tmp/media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'tmp/media')
 
 LOGIN_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
@@ -174,11 +171,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
-
 # STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.VideoMediaCloudinaryStorage'
-
-
- 
