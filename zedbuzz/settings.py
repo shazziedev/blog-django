@@ -22,12 +22,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-22ng7f)cwzj&mjk%1+(jc73dbkkxksy*cn4k6^h(+g00_3u4cg'
+SECRET_KEY = ''
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['swiftstream.herokuapp.com', 'localhost', 'localhost:8000']
+ALLOWED_HOSTS = ['']
 
 
 # Application definition
@@ -141,9 +141,9 @@ django_heroku.settings(locals())
 
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'hjcn0tnad',
-    'API_KEY': '624276314626511',
-    'API_SECRET': 'EwH9MjEEn30qT8Kd6mjJq0IDtTk'
+    'CLOUD_NAME': '',
+    'API_KEY': '',
+    'API_SECRET': ''
 }
 
 STATIC_URL = '/static/'
@@ -174,4 +174,3 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.VideoMediaCloudinaryStorage'
